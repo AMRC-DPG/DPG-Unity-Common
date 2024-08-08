@@ -40,4 +40,4 @@ public class Sounds : Singleton<Sounds>
 
 It also provides functionality to choose (from the editor) whether the subclass is destroyed on load or not.
 
-![singleton.png](~Images\singleton.png)
+![singleton.png](~Images/singleton.png)
