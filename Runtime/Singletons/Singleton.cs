@@ -3,30 +3,30 @@ using UnityEngine;
 namespace DPG_Unity_Common.Runtime.Singletons
 {
     /// <summary>
-    ///     Abstract class to for the Singleton Pattern.
+    ///     Abstract class for the Singleton Pattern.
     /// </summary>
     /// <typeparam name="TComponent">The generic type (of type component) to have the Singleton pattern.</typeparam>
     /// <example>
     ///     An example of how to utilise this class.
-    ///     <code language="C#">
-    /// public class SoundManager : Singleton&lt;SoundManger&gt;
-    /// {
-    ///     protected override void Awake()
+    /// <code language="C#">
+    ///     public class Sounds : Singleton&lt;Sounds&gt;
     ///     {
-    ///         // Custom code here
-    ///         base.Awake();
+    ///         protected override void Awake()
+    ///         {
+    ///             // Custom code
+    ///             base.Awake();
+    ///         }
+    ///
+    ///         private void Start()
+    ///         {
+    ///             throw new NotImplementedException();
+    ///         }
+    ///
+    ///         private void Update()
+    ///         {
+    ///             throw new NotImplementedException();
+    ///         }
     ///     }
-    /// 
-    ///     private void Start()
-    ///     {
-    ///         // Custom code here
-    ///     }
-    /// 
-    ///     private void Update()
-    ///     {
-    ///         // Custom code here
-    ///     } 
-    /// }
     /// </code>
     /// </example>
     public abstract class Singleton<TComponent> : MonoBehaviour
