@@ -1,0 +1,13 @@
+{
+  "name": "com.dpg.common",
+  "version": "1.0.0",
+  "displayName": "DPG Unity Common",
+  "description": "Unity package for common project functionality.",
+  "unity": "2022.3",
+  "author": {
+    "name": "Digital Design",
+    "email": "digitaldesign@amrc.co.uk",
+    "url": "https://www.amrc.co.uk/capabilities/design-and-prototyping"
+  },
+  "documentationUrl": "https://github.com/AMRC-DPG/DPG-Unity-Common/blob/190c0816ff7fc04ec43fd4a4840253ec66a2679e/README.md"
+}
