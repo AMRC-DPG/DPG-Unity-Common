@@ -1,11 +1,15 @@
 # DPG-Unity-Common
 
 <!-- TOC -->
+
 * [DPG-Unity-Common](#dpg-unity-common)
-  * [Editor](#editor)
-    * [ConditionalHide](#conditionalhide)
-  * [Runtime](#runtime)
-    * [Singletons](#singletons)
+    * [Editor](#editor)
+        * [Conditional Hide](#conditional-hide)
+    * [Runtime](#runtime)
+        * [Singletons](#singletons)
+            * [`PersistentSingleton.cs`](#persistentsingletoncs)
+            * [`Singleton.cs`](#singletoncs)
+
 <!-- TOC -->
 
 ## Editor
@@ -45,12 +49,43 @@ public class ExampleClass : MonoBehaviour
 
 ### [Singletons](https://github.com/AMRC-DPG/DPG-Unity-Common/tree/67c0c7c390846d374a374738f69ef3b58b84ce54/Runtime/Singletons)
 
-An abstract base class to provide the logic for the Singleton Pattern to the subclass component.
+Abstract classes to provide singleton pattern logic for the derived class.
+
+*Note - If using the `Awake()` function within the derived class. It must be overriden and call `base.Awake()` within the derived class' `Awake()`
+function.*
+
+#### `PersistentSingleton.cs`
+
+Makes the object a singleton, and uses Unity's `DontDestroyOnLoad()` function to provide persistence between scenes.
+
+#### `Singleton.cs`
+
+Only makes the object a singleton, and it will be destroyed on load by default.
 
 <details><summary>Code example</summary>
 
 ```csharp
-public class Sounds : Singleton<Sounds>
+public class ExamplePersistentSingletonClass : PersistentSingleton<ExamplePersistentSingletonClass>
+{
+    protected override void Awake()
+    {
+        // Custom code here
+        
+        base.Awake();
+    }
+
+    private void Start()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void Update()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class ExampleSingletonClass : Singleton<ExampleSingletonClass>
 {
     protected override void Awake()
     {
@@ -72,7 +107,3 @@ public class Sounds : Singleton<Sounds>
 ```
 
 </details>
-
-It also provides functionality to choose (from the inspector) whether the subclass is destroyed on load or not.
-
-![singleton.png](Images~/Singleton.png)
