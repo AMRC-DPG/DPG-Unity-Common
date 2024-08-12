@@ -1,15 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DPG_Unity_Common.Runtime.Singletons
 {
     /// <summary>
-    ///     Abstract class for a singleton.
+    ///     Abstract class for a persistent singleton.
     /// </summary>
-    /// <typeparam name="TComponent">The generic type (of type component) to be the derived singleton.</typeparam>
+    /// <typeparam name="TComponent">The generic type (of type component) to be the derived persistent singleton.</typeparam>
     /// <example>
     ///     An example of how to use this class.
     /// <code language="C#">
-    ///     public class ExampleSingletonClass : Singleton&lt;ExampleSingletonClass&gt;
+    ///     public class ExamplePersistentSingletonClass : PersistentSingleton&lt;ExamplePersistentSingletonClass&gt;
     ///     {
     ///         protected override void Awake()
     ///         {
@@ -29,7 +29,7 @@ namespace DPG_Unity_Common.Runtime.Singletons
     ///     }
     /// </code>
     /// </example>
-    public abstract class Singleton<TComponent> : MonoBehaviour
+    public class PersistentSingleton<TComponent> : MonoBehaviour
         where TComponent : Component
     {
         /// <summary>
@@ -47,6 +47,9 @@ namespace DPG_Unity_Common.Runtime.Singletons
             else
             {
                 Instance = this as TComponent;
+
+                // Provides persistence across scenes
+                DontDestroyOnLoad(this);
             }
         }
     }
